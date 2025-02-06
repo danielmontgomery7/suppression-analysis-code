@@ -1,0 +1,62 @@
+function info = blank_experiment_info(recording_session)
+
+inputs = strsplit(string(recording_session), ["_", " "]);
+mouse = inputs{1};
+session = inputs{2};
+
+experiment = 'L6 SRP'; % for example
+experiment_folder = 'D:\Daniel\2P\L6 SRP\';
+recording_folder = '\\bearlab-s2.mit.edu\BearShare\Daniel#\Experiments#\2P raw data\ExperimentalRecords\';
+
+
+
+%% DM864
+
+DM864.params.extra_grey_frames = 2200;
+DM864.params.grey_timing = 'start';
+DM864.params.training_angle = 10;
+
+DM864.Baseline.experiment_path = 'DM864\Baseline';
+DM864.SRPd1.experiment_path = 'DM864\SRPd1';
+DM864.SRPd2.experiment_path = 'DM864\SRPd2';
+DM864.SRPd3.experiment_path = 'DM864\SRPd3';
+DM864.SRPd4.experiment_path = 'DM864\SRPd4';
+DM864.Testing200um.experiment_path = 'DM864\Testing-200um';
+DM864.Testing350um.experiment_path = 'DM864\Testing-350um';
+
+DM864.Baseline.recording_path = '2022-04-18\.mat';
+DM864.SRPd1.recording_path = '2022-04-18\2022-04-01 14-00.mat';
+DM864.SRPd2.recording_path = '2022-04-19\2022-04-02 14-05.mat';
+DM864.SRPd3.recording_path = '2022-04-20\2022-04-04 15-40.mat';
+DM864.SRPd4.recording_path = '2022-04-05\2022-04-05 18-13.mat';
+DM864.Testing200um.recording_path = '2022-04-06\2022-04-06 14-24.mat';
+DM864.Testing350um.recording_path = '2022-04-06\2022-04-06 14-38.mat';
+
+
+
+
+%% Output
+
+params = eval(strcat(mouse, ".params"));
+experiment_path = eval(strcat(mouse, ".", session, ".experiment_path"));
+recording_path = eval(strcat(mouse, ".", session, ".recording_path"));
+
+
+data_file = [experiment_folder, experiment_path];
+mat_file = [recording_folder, recording_path];
+
+
+info.recording_session = recording_session;
+info.experiment = experiment;
+info.mouse = mouse;
+info.session = session;
+info.data_file = data_file;
+info.mat_file = mat_file;
+info.params = params;
+
+
+
+
+
+
+

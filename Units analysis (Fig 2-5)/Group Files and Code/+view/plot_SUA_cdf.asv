@@ -1,0 +1,46 @@
+function [] = plot_SUA_cdf(data, plot_title)
+
+
+
+
+figure(); hold on
+for ii = 1:size(data,2)
+
+    cdfplot(data(:,1))
+
+set( h(:,1), 'LineStyle', '-', 'Color', 'b');
+
+
+end
+
+
+
+% CDF
+% figure('Position', [600 700 1000 300]);
+% subplot(131); hold on
+figure(); hold on
+[~, stats.monoc] = cdfplot(data(:,1));
+[~, stats.conc] = cdfplot(data(:,2));
+[~, stats.disc] = cdfplot(data(:,3));
+[~, stats.offset] = cdfplot(data(:,4));
+xlabel('Average dF/F'); ylabel('Cumulative distribution (neurons)')
+set(gca,'TickDir','out')
+% xlim([Fmin Fmax])
+title(' ')
+legend('Monoc', 'Conc', 'Disc', 'Antiphase', 'Location', 'SouthEast')
+axis square
+grid off
+
+
+
+
+
+
+
+
+
+
+
+
+
+end

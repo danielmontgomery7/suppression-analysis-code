@@ -1,0 +1,75 @@
+function varargout = experiment_info(recording_session)
+% input mouse name and recording session (e.g. 'DM321_Baseline)
+% output 
+
+
+%%
+
+    data_file = containers.Map();
+    csv_file = containers.Map();
+    params = containers.Map();
+    
+    
+%% L6
+
+L6_folder = 'D:\Daniel\2P\L6 SRP\';
+rec_folder = '\\bearlab-s2.mit.edu\BearShare\Daniel#\Experiments#\2P raw data\ExperimentalRecords\';
+
+% DM853
+    data_file('DM853_Baseline') = {[L6_folder, 'DM853\20220428\Baseline']};
+    csv_file('DM853_Baseline') = {[rec_folder, '2022-04-28\2022-04-28 15-11.mat']};
+    
+    data_file('DM853_SRPd1') = {[L6_folder, 'DM853\20220428\SRPd1']};
+    csv_file('DM853_SRPd1') = {[rec_folder, '2022-04-28\2022-04-28 15-23.mat']};
+    
+    data_file('DM853_SRPd2') = {[L6_folder, 'DM853\20220429\SRPd2']};
+    csv_file('DM853_SRPd2') = {[rec_folder, '2022-04-29\2022-04-29 13-21.mat']};
+    
+    data_file('DM853_SRPd3') = {[L6_folder, 'DM853\20220502\SRPd3']};
+    csv_file('DM853_SRPd3') = {[rec_folder, '2022-05-02\2022-05-02 15-37.mat']};
+    
+    data_file('DM853_SRPd4') = {[L6_folder, 'DM853\20220503\SRPd4']};
+    csv_file('DM853_SRPd4') = {[rec_folder, '2022-05-03\2022-05-03 15-45.mat']};
+    
+    data_file('DM853_Testing_200um') = {[L6_folder, 'DM853\20220503\200um']};
+    csv_file('DM853_Testing_200um') = {[rec_folder, '2022-05-04\2022-05-04 16-06.mat']};
+    
+    data_file('DM853_Testing_350um') = {[L6_folder, 'DM853\20220503\350um']};
+    csv_file('DM853_Testing_350um') = {[rec_folder, '2022-05-04\2022-05-04 16-21.mat']};
+    
+
+
+
+
+%% Output
+% 
+%     info.recording_session = recording_session;
+%     info.data_file = data_file(info.recording_session{:});
+%     info.csv_file = csv_file(info.recording_session{:});
+
+
+    varargout{1} = data_file(recording_session);
+    
+    if isKey(csv_file, recording_session{:})
+        varargout{2} = csv_file(recording_session{:});
+    end
+    
+    if isKey(params, recording_session{:})
+        varargout{3} = params(recording_session{:});
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
